@@ -134,6 +134,7 @@ public class TouchDetector : MonoBehaviour
     {
         Debug.Log("Un solo Dedo");
         //dispara una sola bala
+        SoundControllerSC.PlaySound("PlayerFire");
         shoot.MakeShoot();
 
     }
