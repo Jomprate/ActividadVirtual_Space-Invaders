@@ -27,27 +27,28 @@ public class Shoot : MonoBehaviour
 
     public void MakeShoot()
     {
-        GameObject Temporary_Bullet_Handler;
-        Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+        //GameObject Temporary_Bullet_Handler;
+        //Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
+        Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation);
+        //Rigidbody Temporary_RigidBody;
+        //Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
 
-        Rigidbody Temporary_RigidBody;
-        Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
-
-        Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
+        //Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
 
 
     }
     public void MakeSpecialShoot()
     {
-        GameObject Temporary_Bullet_Handler;
-        Temporary_Bullet_Handler = Instantiate(BulletType2, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
+        //GameObject Temporary_Bullet_Handler;
+        //Temporary_Bullet_Handler = Instantiate(BulletType2, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
+        Instantiate(BulletType2, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation);
 
-        Rigidbody Temporary_RigidBody;
-        Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
+        //Rigidbody Temporary_RigidBody;
+        //Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
 
-        Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
+        //Temporary_RigidBody.AddForce(transform.forward * Bullet_Forward_Force);
 
 
     }

@@ -11,6 +11,7 @@ public class BulletCO : MonoBehaviour
     Collider ColliderOBJ;
     Collider collisionCol;
     bool counted = false;
+    public float speed;
     
 
     void Start()
@@ -41,11 +42,17 @@ public class BulletCO : MonoBehaviour
         }
         #endregion
 
-        if (RB.velocity.magnitude <0.5F)
-        {
-            Destroy(gameObject);
-        }
+        //if (RB.velocity.magnitude <0.5F)
+        //{
+        //    Destroy(gameObject);
+        //}
 
+    }
+    void FixedUpdate()
+    {
+        Vector3 velocityRB = RB.velocity;
+        velocityRB.y = speed;
+        RB.velocity = velocityRB;
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -87,52 +94,67 @@ public class BulletCO : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        //if (Btype1)
-        //{
-        //    if (col.tag == "Enemy")
-        //    {
-                               
-        //        //addScore
-        //        Destroy(col.gameObject);
-        //        if (counted == false)
-        //        {
-                    
-        //            ColliderOBJ.enabled = false;
-        //            EnemyDeathCounter.enemyKilled += 1;
-        //            counted = true;
-        //        }
-        //        Destroy(gameObject);
 
-                
-        //    }
-        //}
         //if (Btype2)
         //{
         //    if (col.tag == "Enemy")
         //    {
         //        //addScore
 
-        //        //if (counted == false)
-        //        //{
-
-        //        //    //ColliderOBJ.enabled = false;
-
-        //        //    counted = true;
-        //        //}
-        //        addEnemyKilled();
         //        Destroy(col.gameObject);
+                
+
+        //        addEnemyKilled();
+
 
 
         //    }
         //}
+        //if (Btype1)
+        //{
+        //    if (col.tag == "Enemy")
+        //    {
 
-        
+        //        //addScore
+        //        Destroy(col.gameObject);
+        //        if (counted == false)
+        //        {
+
+        //            ColliderOBJ.enabled = false;
+        //            EnemyDeathCounter.enemyKilled += 1;
+        //            counted = true;
+        //        }
+        //        Destroy(gameObject);
 
     }
+    //    }
+    //}
+    //if (Btype2)
+    //{
+    //    if (col.tag == "Enemy")
+    //    {
+    //        //addScore
+
+    //        //if (counted == false)
+    //        //{
+
+    //        //    //ColliderOBJ.enabled = false;
+
+    //        //    counted = true;
+    //        //}
+    //        addEnemyKilled();
+    //        Destroy(col.gameObject);
+
+
+    //    }
+    //}
 
     void addEnemyKilled()
     {
         EnemyDeathCounter.enemyKilled += 1;
 
     }
+
 }
+
+    

@@ -722,7 +722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 156.1, y: -10}
+  m_AnchoredPosition: {x: 326, y: -10}
   m_SizeDelta: {x: -1811.2, y: 116.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &427569033
@@ -2185,7 +2185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 854, y: -10}
+  m_AnchoredPosition: {x: 886, y: -10}
   m_SizeDelta: {x: -1811.2, y: 116.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1547730183
@@ -2274,7 +2274,7 @@ MonoBehaviour:
   Bullet: {fileID: 58495043662953820, guid: 8a0c7c08ced08b942b3b30e2023ba29d, type: 3}
   BulletType2: {fileID: 6266984552265821460, guid: 02fe4406f3765d847a15c51b366c9102,
     type: 3}
-  Bullet_Forward_Force: 150
+  Bullet_Forward_Force: 1000
   enemyCounter: 0
 --- !u!23 &1558700969
 MeshRenderer:

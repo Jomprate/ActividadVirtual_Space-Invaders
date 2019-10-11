@@ -8,6 +8,11 @@ public class TouchDetector : MonoBehaviour
     [SerializeField] TextMeshProUGUI coolDownTXT;
     [SerializeField] TextMeshProUGUI EnemyKilledTXT;
 
+    // Burst Variables
+    float elapsed;
+
+
+    //
     bool canTouch = false;
     float counterOfShoots;
     float timeToCountOfShoots = 3;
@@ -75,12 +80,23 @@ public class TouchDetector : MonoBehaviour
 
             if (counterOfShoots > 0)
             {
-                shoot.MakeShoot();
+
+                elapsed += Time.deltaTime;
+                if (elapsed >= 0.2f)
+                {
+                    elapsed = elapsed % 0.2f;
+                    shootV();
+                }
+
+
+                //InvokeRepeating("shootV", 1, 0.5f);
+                //shoot.MakeShoot();
                 Debug.Log("DISPARO OTRA");
                 counterOfShoots -= Time.deltaTime;
                 
                 if (counterOfShoots <= 0)
                 {
+                    InvokeRepeating("shootV", 0, 0.0f);
                     shootB1Active = false;
                 }
             }
@@ -108,8 +124,11 @@ public class TouchDetector : MonoBehaviour
 
 
     }
-    
 
+    void shootV()
+    {
+        shoot.MakeShoot();
+    }
 
     void OneFingerTouch()
     {
