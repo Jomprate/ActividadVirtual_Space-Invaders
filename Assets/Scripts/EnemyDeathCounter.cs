@@ -6,6 +6,4 @@ using TMPro;
 public static class EnemyDeathCounter
 {
     public static int enemyKilled = 0;
-    
-
 }

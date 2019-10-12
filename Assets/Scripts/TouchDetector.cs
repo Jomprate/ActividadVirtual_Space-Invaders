@@ -8,11 +8,8 @@ public class TouchDetector : MonoBehaviour
     [SerializeField] TextMeshProUGUI coolDownTXT;
     [SerializeField] TextMeshProUGUI EnemyKilledTXT;
 
-    // Burst Variables
     float elapsed;
 
-
-    //
     bool canTouch = false;
     float counterOfShoots;
     float timeToCountOfShoots = 3;
@@ -28,7 +25,6 @@ public class TouchDetector : MonoBehaviour
     void Start()
     {
         shoot = GameObject.FindGameObjectWithTag("BulletEmitter").GetComponent<Shoot>();
-
     }
 
     void Update()
@@ -88,15 +84,11 @@ public class TouchDetector : MonoBehaviour
                     shootV();
                 }
 
-
-                //InvokeRepeating("shootV", 1, 0.5f);
-                //shoot.MakeShoot();
-                Debug.Log("DISPARO OTRA");
+               
                 counterOfShoots -= Time.deltaTime;
                 
                 if (counterOfShoots <= 0)
                 {
-                    InvokeRepeating("shootV", 0, 0.0f);
                     shootB1Active = false;
                 }
             }
@@ -128,32 +120,22 @@ public class TouchDetector : MonoBehaviour
     void shootV()
     {
         shoot.MakeShoot();
+        SoundControllerSC.PlaySound("EnemyFire");
     }
 
     void OneFingerTouch()
     {
-        Debug.Log("Un solo Dedo");
-        //dispara una sola bala
-        SoundControllerSC.PlaySound("PlayerFire");
+        SoundControllerSC.PlaySound("EnemyFire");
         shoot.MakeShoot();
-
     }
-    void TwoFingerTouch()
-    {
-        Debug.Log("Dos Dedos");
-
-    }
+    
     void ThreeFingerTouch()
     {
-        Debug.Log("Tres Dedos");
         if (CanShootB1)
         {
             shootB1Active = true;
             counterOfShoots = timeToCountOfShoots;
             counterOfCoolDown = timeToCountOfCoolDown;
         }
-        //dispara rafaga de balas
-
-
     }
 }

@@ -9,41 +9,23 @@ public class EnemyCO : MonoBehaviour
     public GameObject RotOBJ;
     public Transform RotTransform;
 
-    public int childs;
+    readonly float fireRate =0.98f;
+    readonly Shoot shoot;
 
-    float fireRate =0.98f;
-    Shoot shoot;
-    LinesCreator linesCreator;
-
-    //public GameObject Bullet_Emitter;
     public GameObject Bullet;
-    public float Bullet_Forward_Force;
+    public RestartScene restartScene;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         speedOfEnemies = 0.6f;
-        //shoot = GameObject.FindGameObjectWithTag("EnemyBulletEmitter").GetComponent<Shoot>();
+
         RotTransform = RotOBJ.GetComponent<Transform>();
-        InvokeRepeating("MoveEnemy", 0.1f, 0.3f);
+        InvokeRepeating("MoveEnemy", 0.1f, 0.2f);
         enemyHolder = GetComponent<Transform>();
-        linesCreator = GameObject.FindGameObjectWithTag("LinesCreator").GetComponent<LinesCreator>();
     }
-    void Update()
-    {
-        //shoot = GameObject.FindGameObjectWithTag("EnemyBulletEmitter").GetComponent<Shoot>();
-        //if (enemyHolder.childCount >= 0)
-        //{
-        //    childs = enemyHolder.childCount;
-        //    if (childs <= 0)
-        //    {
-        //        linesCreator.InstantiateLine();
-        //    }
-        //}
-        
-    }
-    void MoveEnemy()
+   
+    
+    public void MoveEnemy()
     {
         enemyHolder.position += Vector3.right * speedOfEnemies;
         foreach (Transform enemy in enemyHolder)
@@ -57,18 +39,8 @@ public class EnemyCO : MonoBehaviour
             float randomN = Random.Range(0.0f,1.0f);
             if (randomN > fireRate)
             {
-                //******************************
-                GameObject Temporary_Bullet_Handler;
-                Temporary_Bullet_Handler = Instantiate(Bullet, enemy.position, RotTransform.rotation) as GameObject;//enemy.rotation) as GameObject;
-
-
-                Rigidbody Temporary_RigidBody;
-                Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
-
-                Temporary_RigidBody.AddForce(RotTransform.forward * Bullet_Forward_Force);
-
-
-                //*****************************
+                Instantiate(Bullet, enemy.position, RotTransform.rotation);
+                SoundControllerSC.PlaySound("PlayerFire");
             }
 
             if (enemy.position.y <= -2.2)
@@ -77,18 +49,13 @@ public class EnemyCO : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
-        
 
-        //if (enemyHolder.childCount == 1 || enemyHolder.position.y < -1)
-        //{
-        //    CancelInvoke();
-        //    InvokeRepeating("MoveEnemy", 0.1f, 0.25f);
-
-        //}
-        if (enemyHolder.childCount == 0)
+        if (enemyHolder.childCount <= 1)
         {
-            //win
+            restartScene.playerWon = true;
         }
     }
+
+
    
 }

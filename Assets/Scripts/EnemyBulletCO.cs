@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemyBulletCO : MonoBehaviour
 {
-
     MainGoHealth mainGoHealth;
-
+    public float speed;
     Rigidbody RB;
 
     void Start()
@@ -14,26 +13,18 @@ public class EnemyBulletCO : MonoBehaviour
         RB = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (RB.velocity.magnitude < 1F)
-        {
-            Destroy(gameObject);
-        }
+        Vector3 velocityRB = RB.velocity;
+        velocityRB.y = -speed;
+        RB.velocity = velocityRB;
     }
-
-    void OnCollisionEnter(Collision collision)
+    
+    void OnTriggerEnter(Collider col)
     {
-        if (collision.gameObject.tag == "ProtectionBase")
+        if (col.tag == "ProtectionBase")
         {
-            mainGoHealth = collision.gameObject.GetComponent<MainGoHealth>();
-            mainGoHealth.RemoveHealth(1);
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.tag == "Player")
-        {
-            mainGoHealth = collision.gameObject.GetComponent<MainGoHealth>();
+            mainGoHealth = col.gameObject.GetComponent<MainGoHealth>();
             mainGoHealth.RemoveHealth(1);
             Destroy(gameObject);
         }

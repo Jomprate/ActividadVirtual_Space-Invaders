@@ -5,22 +5,18 @@ using UnityEngine;
 public class SoundControllerSC : MonoBehaviour
 {
 
-    public static AudioClip PlayerfireSound,SpaceExplosion;
+    public static AudioClip PlayerfireSound,SpaceExplosion,MenuSelection,EnemyFire;
     static AudioSource audioSource;
-    // Start is called before the first frame update
     void Start()
     {
         PlayerfireSound = Resources.Load<AudioClip>("PlayerFire");
         SpaceExplosion = Resources.Load<AudioClip>("SpaceExplosion");
+        MenuSelection = Resources.Load<AudioClip>("MenuSelection");
+        EnemyFire = Resources.Load<AudioClip>("EnemyFire");
 
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
     public static void PlaySound(string clip)
     {
         switch (clip)
@@ -31,7 +27,12 @@ public class SoundControllerSC : MonoBehaviour
             case "SpaceExplosion":
                 audioSource.PlayOneShot(SpaceExplosion);
                 break;
-
+            case "MenuSelection":
+                audioSource.PlayOneShot(MenuSelection);
+                break;
+            case "EnemyFire":
+                audioSource.PlayOneShot(EnemyFire);
+                break;
 
             default:
                 break;

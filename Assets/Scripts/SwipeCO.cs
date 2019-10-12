@@ -5,22 +5,18 @@ using TMPro;
 
 public class SwipeCO : MonoBehaviour {
 
-    [SerializeField] TextMeshProUGUI specialCoolDownTXT; 
-
+    [SerializeField] TextMeshProUGUI specialCoolDownTXT;
+    [SerializeField] bool CanShootSpecial = false;
     [SerializeField] float counterOfCoolDown;
+
     float timeToCountOfCoolDown = 60;
 
     private Vector3 startTouchPosition, endTouchPosition;
 
-
-    [SerializeField]bool CanShootSpecial = false;
-
     Shoot shoot;
 
-
-
-    private void Start () {
-
+    private void Start ()
+    {
         shoot = GameObject.FindGameObjectWithTag("BulletEmitter").GetComponent<Shoot>();
     }
 	
@@ -78,12 +74,8 @@ public class SwipeCO : MonoBehaviour {
 
             if (endTouchPosition.y > startTouchPosition.y && Vector2.Distance(endTouchPosition,startTouchPosition) > 400)
             {
-                Debug.Log("Swipe");
                 if (CanShootSpecial)
                 {
-
-                    Debug.Log("Swipe Special Bullet");
-
                     shoot.MakeSpecialShoot();
                     counterOfCoolDown = timeToCountOfCoolDown;
                 }

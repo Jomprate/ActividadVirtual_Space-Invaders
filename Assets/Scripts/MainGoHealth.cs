@@ -22,8 +22,6 @@ public class MainGoHealth : MonoBehaviour
                 Execute = true;
             }
             Destroy(gameObject, 1);
-
-
         }
     }
     public void RemoveHealth(float dmgAmount)
@@ -34,6 +32,5 @@ public class MainGoHealth : MonoBehaviour
     public void WhenDead()
     {
         SoundControllerSC.PlaySound("SpaceExplosion");
-
     }
 }

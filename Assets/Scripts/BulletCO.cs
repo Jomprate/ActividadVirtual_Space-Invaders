@@ -42,10 +42,6 @@ public class BulletCO : MonoBehaviour
         }
         #endregion
 
-        //if (RB.velocity.magnitude <0.5F)
-        //{
-        //    Destroy(gameObject);
-        //}
 
     }
     void FixedUpdate()
